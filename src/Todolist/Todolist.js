@@ -12,36 +12,25 @@ export default class Todolist extends Component {
         };
     }   
 
-    addData=(e)=>{
-        //按下回车的时候在增加
-            let title=this.refs.title.value;
+    addData=(data)=>{
+            let title=data;
             let tempList=this.state.list;
-
+            console.log(title,tempList);
             tempList.push({
                 title:title,
                 checked:false
             })
-            //改变后的值赋值给list
-
             this.setState({
 
                 list:tempList
             })
-
-            //表单置为空
-            this.refs.title.value='';
-
-            //执行缓存数据           
-
-            storage.set('todolist',tempList);
-
-
-        
+            storage.set('todolist',tempList); 
     }
     checkboxChage=(key)=>{
-
+        console.log("000");
         // alert('111');
         let tempList=this.state.list;
+        console.log(tempList);
         tempList[key].checked=!tempList[key].checked;
         this.setState({
             list:tempList
@@ -73,11 +62,22 @@ export default class Todolist extends Component {
 
     }
     render() {
+        var doing = 0;
+        var done = 0;
+        this.state.list.forEach((item)=>{
+            if(item.checked == false){
+                doing += 1;
+            }else{
+                done += 1;
+            }
+        })
         return (
             
             <div>
-               <Todoinput/>
-               <Todoing/>
+               <Todoinput addData={this.addData}/>
+               <Todoing addData={this.addData} todo={this.state.list} 
+               removeData={this.removeData} checkboxChage={this.checkboxChage}
+               doing={doing} done={done}/>
             </div>
         );
     }

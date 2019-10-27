@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class Todoing extends Component {
     render() {
         // this.state.list.
@@ -13,23 +14,17 @@ export default class Todoing extends Component {
                         (todo || []).map((value,key)=>{
 
                             if(!value.checked){
-
                                 return (
-
                                     <li key={key}>
-
                                         <input type="checkbox" checked={value.checked} 
-                                        onChange={this.checkboxChage.bind(this,key)} />
+                                        onClick={()=>this.props.checkboxChage(key)} />
 
                                         {value.title}-- 
-                                        <button onClick={this.removeData.bind(this,key)}>删除</button>
+                                        <button onClick={()=>this.props.removeData(key)}>删除</button>
                                     </li>
                                 )
                             }
-
                         })
-
-
                     }
                 </ul>           
 
@@ -39,22 +34,17 @@ export default class Todoing extends Component {
                 <ul>
                     {
                         (todo || []).map((value,key)=>{
-
                             if(value.checked){
-
                                 return (
-
                                     <li key={key}>
-
                                         <input type="checkbox" checked={value.checked} 
-                                        onChange={this.checkboxChage.bind(this,key)} />
+                                        onChange={()=>this.props.checkboxChage(key)} />
 
                                         {value.title}-- 
-                                        <button onClick={this.removeData.bind(this,key)}>删除</button>
+                                        <button onClick={()=>this.props.removeData(key)}>删除</button>
                                     </li>
                                 )
                             }
-
                         })
                     }
                 </ul>    
