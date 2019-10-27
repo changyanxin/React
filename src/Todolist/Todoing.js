@@ -5,10 +5,23 @@ export default class Todoing extends Component {
     render() {
         // this.state.list.
         var {todo} = this.props;
+        var templist = todo;
+        // var arr = list.state.list;
+        var doing = 0;
+        var done = 0;
+        for(var i = 0; i < templist.length; i++){
+            if(templist[i].checked == false){
+                doing++;
+            }else{
+                done++;
+            }
+        }
         return (
             <div>
-                <h2>待办事项</h2>
-
+                <h2>
+                    待办事项
+                    <span>{doing}</span>
+                </h2>
                 <ul>
                     {
                         (todo || []).map((value,key)=>{
@@ -30,7 +43,11 @@ export default class Todoing extends Component {
 
 
 
-                <h2>已完成事项</h2>
+                <h2>
+                    已完成事项
+                    <span>{done}</span>
+                </h2>
+
                 <ul>
                     {
                         (todo || []).map((value,key)=>{

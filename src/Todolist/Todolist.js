@@ -62,22 +62,12 @@ export default class Todolist extends Component {
 
     }
     render() {
-        var doing = 0;
-        var done = 0;
-        this.state.list.forEach((item)=>{
-            if(item.checked == false){
-                doing += 1;
-            }else{
-                done += 1;
-            }
-        })
         return (
             
             <div>
                <Todoinput addData={this.addData}/>
                <Todoing addData={this.addData} todo={this.state.list} 
-               removeData={this.removeData} checkboxChage={this.checkboxChage}
-               doing={doing} done={done}/>
+               removeData={this.removeData} checkboxChage={this.checkboxChage}/>
             </div>
         );
     }
