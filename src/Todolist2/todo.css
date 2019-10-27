@@ -1,0 +1,18 @@
+.box1{
+    background-color: aquamarine;
+}
+.box{
+    width:100px;
+    height:30px;
+    border:1px black solid;
+}
+ul{
+    list-style:none;
+}
+.one{
+    float:left;
+    margin-top:10px;
+}
+.two{
+    float:left;
+}
